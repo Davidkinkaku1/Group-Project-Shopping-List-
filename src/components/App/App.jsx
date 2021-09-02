@@ -41,6 +41,7 @@ const addGrocery = () => {
         setnewQuantitiy(0);
         setnewUnit('');
         
+          //call getGroceries
         getGroceries();
       })
       .catch(err => {
