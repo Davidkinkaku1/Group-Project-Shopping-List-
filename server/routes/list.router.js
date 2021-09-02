@@ -38,8 +38,7 @@ router.post('/', (req, res) => {
         })
 })
 
-
-
+// INDIVIDUAL ITEM DELETE
 router.delete('/:id', (req, res) => {
     const foodies = req.params.id;
     console.log(`Deleting groceries with id ${foodies}`)
@@ -52,10 +51,6 @@ router.delete('/:id', (req, res) => {
     })
 
 });
-
-
-
-
 
 
 
