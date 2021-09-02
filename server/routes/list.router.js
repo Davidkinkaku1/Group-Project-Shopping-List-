@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
-
+router.use(express.urlencoded({ extended: true }));
 // TODO - Add routes here...
 
 
@@ -27,8 +27,9 @@ router.post('/', (req, res) => {
     const sqlText = `INSERT INTO groceries ("item", "quantity", "unit", "purchased")
                      VALUES ($1, $2, $3, $4)`;
     pool.query(sqlText, [grocery.item, grocery.quantity, grocery.unit, grocery.purchased])
+
         .then((result) => {
-            console.log(`Added some grocery data to the database`, guest);
+            console.log(`Added some grocery data to the database`, grocery);
             res.sendStatus(201);
         })
         .catch((error) => {
@@ -36,6 +37,21 @@ router.post('/', (req, res) => {
             res.sendStatus(500); // Good server always responds
         })
 })
+
+// INDIVIDUAL ITEM DELETE
+router.delete('/:id', (req, res) => {
+    const foodies = req.params.id;
+    console.log(`Deleting groceries with id ${foodies}`)
+    const sqlText = `DELETE FROM "groceries" WHERE id=$1;`;
+    pool.query(sqlText, [foodies]).then(() => {
+        res.sendStatus(204); //successful Delete
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    })
+
+});
+
 
 
 module.exports = router;
