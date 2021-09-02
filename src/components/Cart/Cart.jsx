@@ -1,5 +1,5 @@
 
-const cartContents = (props) => {
+function cartContents() {
 return (
     <>
     <h2>Cart Contents</h2>
