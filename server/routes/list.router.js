@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
-
+router.use(express.urlencoded({ extended: true }));
 // TODO - Add routes here...
 
 
@@ -23,11 +23,12 @@ router.get('/', (req, res) => {
 // POST: posting for adding a new item to the database
 router.post('/', (req, res) => {
     const grocery = req.body;
+    console.log(`this is req body contents! ${req.body}`);
     const sqlText = `INSERT INTO groceries ("item", "quantity", "unit")
                      VALUES ($1, $2, $3)`;
     pool.query(sqlText, [grocery.item, grocery.quantity, grocery.unit])
         .then((result) => {
-            console.log(`Added some grocery data to the database`, guest);
+            console.log(`Added some grocery data to the database`, grocery);
             res.sendStatus(201);
         })
         .catch((error) => {
@@ -53,7 +54,7 @@ router.put('/:groceriesid', (req, res) => {
         })
 })
 
-//Delete item from groceries
+//Delete all items from groceries
 router.delete('/deleteAll', (req, res) => {
     console.log(`Deleting groceries`);
     const queryText = `DELETE FROM "groceries";`;
@@ -65,6 +66,20 @@ router.delete('/deleteAll', (req, res) => {
         res.sendStatus(500);
     })
  });
+
+// INDIVIDUAL ITEM DELETE
+router.delete('/:id', (req, res) => {
+    const foodies = req.params.id;
+    console.log(`Deleting groceries with id ${foodies}`)
+    const sqlText = `DELETE FROM "groceries" WHERE id=$1;`;
+    pool.query(sqlText, [foodies]).then(() => {
+        res.sendStatus(204); //successful Delete
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    })
+
+});
 
 
 module.exports = router;

@@ -3,6 +3,11 @@ import './App.css';
 import axios from 'axios';
 import Header from '../Header/Header.jsx'
 import InputsForm from '../Inputs/inputs.jsx';  
+import cartContents from '../Cart/cart.jsx';
+
+
+
+
 
 
 function App() {
