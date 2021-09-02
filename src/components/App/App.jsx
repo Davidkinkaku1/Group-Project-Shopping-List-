@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Header from '../Header/Header.jsx'
 import './App.css';
 import InputsForm from '../Inputs/inputs.jsx';  
+import cartContents from '../Cart/cart.jsx';
 
 
 function App() {
