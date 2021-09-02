@@ -40,16 +40,11 @@ router.put('/:groceriesid', (req, res) => {
     // set the re.params to a variable
     let groceriesid = req.params.groceriesid;
     console.log(`Checking out groceries with id ${groceriesid}`);
-    const updateGroceries = req.body;
-    console.log(updateGroceries);
-    const item = updateGroceries.item;
-    const quantity = updateGroceries.quantity;
-    const unit = updateGroceries.unit;
     // toggel the true or false value
     const queryText = `UPDATE "groceries" 
-    SET "item" = $2, "quantity" = $3, "unit" = $4
+    SET "purchased" = NOT "purchased"
     WHERE id=$1;`;
-    pool.query(queryText, [groceriesid, item, quantity, unit])
+    pool.query(queryText, [groceriesid])
         .then(() => {
             res.sendStatus(200); // successful update
         }).catch((err) => {
@@ -59,10 +54,10 @@ router.put('/:groceriesid', (req, res) => {
 })
 
 //Delete item from groceries
-router.delete('/:groceriesid', (req, res) => {
-    console.log(`Deleting groceries with id ${req.params.groceriesid}`);
-    const queryText = `DELETE FROM "groceries" WHERE id=$1;`;
-    pool.query(queryText, [req.params.groceriesid])
+router.delete('/deleteAll', (req, res) => {
+    console.log(`Deleting groceries`);
+    const queryText = `DELETE FROM "groceries";`;
+    pool.query(queryText)
     .then(() => {
         res.sendStatus(204); // successful delete
     }).catch((err) => {

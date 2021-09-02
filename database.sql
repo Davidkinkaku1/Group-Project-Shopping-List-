@@ -6,7 +6,8 @@ CREATE TABLE groceries(
 	"id" SERIAL PRIMARY KEY NOT NULL,
 	"item" VARCHAR(80) NOT NULL,
 	"quantity" DECIMAL(15,2),
-    "unit" VARCHAR(50) NOT NULL
+    "unit" VARCHAR(50) NOT NULL,
+	"purchased" BOOLEAN DEFAULT FALSE
 );
 
 INSERT INTO "groceries" 
