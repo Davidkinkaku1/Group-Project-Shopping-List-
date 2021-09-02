@@ -24,9 +24,9 @@ router.get('/', (req, res) => {
 // POST: posting for adding a new item to the database
 router.post('/', (req, res) => {
     const grocery = req.body;
-    const sqlText = `INSERT INTO groceries ("item", "quantity", "unit")
-                     VALUES ($1, $2, $3)`;
-    pool.query(sqlText, [grocery.item, grocery.quantity, grocery.unit])
+    const sqlText = `INSERT INTO groceries ("item", "quantity", "unit", "purchased")
+                     VALUES ($1, $2, $3, $4)`;
+    pool.query(sqlText, [grocery.item, grocery.quantity, grocery.unit, grocery.purchased])
         .then((result) => {
             console.log(`Added some grocery data to the database`, guest);
             res.sendStatus(201);
