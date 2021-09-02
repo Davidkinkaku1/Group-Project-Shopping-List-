@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Header from '../Header/Header.jsx'
 import InputsForm from '../Inputs/inputs.jsx';  
-import cartContents from '../Cart/cart.jsx';
+import cartContents from '../Cart/Cart.jsx';
 
 
 
