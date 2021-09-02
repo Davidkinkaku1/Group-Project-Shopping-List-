@@ -3,15 +3,15 @@ import "./App.css";
 import axios from "axios";
 import Header from "../Header/Header.jsx";
 import InputsForm from "../Inputs/inputs.jsx";
-import cartContents from "../Cart/Cart.jsx";
-
-let [grocieriesList, setgrocieriesList] = useState([]);
-let [newItem, setnewItem] = useState([""]);
-let [newQuantity, setnewQuantitiy] = useState([0]);
-let [newUnit, setnewUnit] = useState([""]);
-let [newPurchase, setNewPurchase] = useState([false]);
+import CartContents from "../Cart/Cart.jsx";
 
 function App() {
+  let [grocieriesList, setgrocieriesList] = useState([]);
+  let [newItem, setnewItem] = useState([""]);
+  let [newQuantity, setnewQuantitiy] = useState([0]);
+  let [newUnit, setnewUnit] = useState([""]);
+  let [newPurchase, setNewPurchase] = useState([false]);
+
   // on load, get groceries
   useEffect(() => {
     getGroceries();
@@ -57,7 +57,7 @@ function App() {
     <div className="App">
       <Header />
       <InputsForm />
-      <cartContents />
+      <CartContents />
     </div>
   );
 }

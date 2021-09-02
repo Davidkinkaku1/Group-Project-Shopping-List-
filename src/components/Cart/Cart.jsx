@@ -1,24 +1,11 @@
-
-function cartContents() {
-return (
+function CartContents() {
+  return (
     <>
-    <h2>Cart Contents</h2>
-    <button type="submit">Reset</button>
-    <button type="submit" >clear</button>
+      <h2>Cart Contents</h2>
+      <button type="submit">Reset</button>
+      <button type="submit">clear</button>
     </>
-    )
+  );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-export default cartContents;
+export default CartContents;

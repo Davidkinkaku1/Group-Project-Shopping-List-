@@ -1,9 +1,3 @@
 const appendList = (props) => {
-    return (
-    <>
-    
-
-
-        </>
-    )
-}
+  return <></>;
+};
