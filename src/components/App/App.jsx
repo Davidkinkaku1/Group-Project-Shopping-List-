@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-
-import Header from '../Header/Header.jsx'
 import './App.css';
+import Header from '../Header/Header.jsx'
 import InputsForm from '../Inputs/inputs.jsx';  
 
 
@@ -34,7 +33,21 @@ function App() {
     }
 
 
-
+const addGrocery = () => {
+    axios.post('/groceries', { item: newItem, quantity: newQuantity, unit: newUnit })
+      .then(response => {
+        // clear inputs
+        setnewItem('');
+        setnewQuantitiy(0);
+        setnewUnit('');
+        
+        getGroceries();
+      })
+      .catch(err => {
+        alert('Error Adding Grocery');
+        console.log(err);
+      })
+  };
 
 
 
