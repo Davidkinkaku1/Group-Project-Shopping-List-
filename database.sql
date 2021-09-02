@@ -6,14 +6,15 @@ CREATE TABLE groceries(
 	"id" SERIAL PRIMARY KEY NOT NULL,
 	"item" VARCHAR(80) NOT NULL,
 	"quantity" DECIMAL(15,2),
-    "unit" VARCHAR(50) NOT NULL
+    "unit" VARCHAR(50) NOT NULL,
+	"purchased" BOOLEAN DEFAULT FALSE
 );
 
 INSERT INTO "groceries" 
 	("item", "quantity", "unit") 
 VALUES 
-	('Appels',3, '2 lbs'),
-	('Milk', 4, '1 gallon');
+	('Appels',3, 'lbs'),
+	('Milk', 4, 'gallon');
 	
 	--select all groceries
 SELECT * FROM "groceries";

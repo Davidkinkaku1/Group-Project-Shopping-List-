@@ -20,7 +20,6 @@ router.get('/', (req, res) => {
         })
 })
 
-
 // POST: posting for adding a new item to the database
 router.post('/', (req, res) => {
     const grocery = req.body;
@@ -38,6 +37,36 @@ router.post('/', (req, res) => {
         })
 })
 
+router.put('/:groceriesid', (req, res) => {
+    // set the re.params to a variable
+    let groceriesid = req.params.groceriesid;
+    console.log(`Checking out groceries with id ${groceriesid}`);
+    // toggel the true or false value
+    const queryText = `UPDATE "groceries" 
+    SET "purchased" = NOT "purchased"
+    WHERE id=$1;`;
+    pool.query(queryText, [groceriesid])
+        .then(() => {
+            res.sendStatus(200); // successful update
+        }).catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        })
+})
+
+//Delete all items from groceries
+router.delete('/deleteAll', (req, res) => {
+    console.log(`Deleting groceries`);
+    const queryText = `DELETE FROM "groceries";`;
+    pool.query(queryText)
+    .then(() => {
+        res.sendStatus(204); // successful delete
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    })
+ });
+
 // INDIVIDUAL ITEM DELETE
 router.delete('/:id', (req, res) => {
     const foodies = req.params.id;
@@ -51,7 +80,6 @@ router.delete('/:id', (req, res) => {
     })
 
 });
-
 
 
 module.exports = router;

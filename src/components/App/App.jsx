@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
 import Header from '../Header/Header.jsx'
 import InputsForm from '../Inputs/inputs.jsx';  
 import cartContents from '../Cart/cart.jsx';
@@ -10,15 +11,6 @@ import cartContents from '../Cart/cart.jsx';
 
 
 function App() {
-    return (
-        <div className="App">
-            < Header />
-            < InputsForm />
-            <main>
-                <p>Under Construction...</p>
-            </main>
-        </div>
-    );
 
     // on load, get groceries
     useEffect(() => {
@@ -54,6 +46,17 @@ const addGrocery = () => {
         console.log(err);
       })
   };
+
+    return (
+        <div className="App">
+            < Header />
+            < InputsForm />
+            <main>
+                <p>Under Construction...</p>
+            </main>
+        </div>
+    );
+
 
 
 
