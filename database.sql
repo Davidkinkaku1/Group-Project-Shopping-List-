@@ -12,8 +12,8 @@ CREATE TABLE groceries(
 INSERT INTO "groceries" 
 	("item", "quantity", "unit") 
 VALUES 
-	('Appels',3, '2 lbs'),
-	('Milk', 4, '1 gallon');
+	('Appels',3, 'lbs'),
+	('Milk', 4, 'gallon');
 	
 	--select all groceries
 SELECT * FROM "groceries";
