@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import Header from '../Header/Header.jsx'
 import InputsForm from '../Inputs/inputs.jsx';  
-import cartContents from '../Cart/cart.jsx';
+import cartContents from '../Cart/Cart.jsx';
 
-
-
+    let [grocieriesList, setgrocieriesList] = useState([]);
+    let [newItem, setnewItem] = useState(['']);
+    let [newQuantity, setnewQuantitiy] = useState([0]);
+    let [newUnit, setnewUnit] = useState(['']);
+    let [newPurchase, setNewPurchase] = useState([false]);
 
 
 
@@ -15,6 +18,7 @@ function App() {
         <div className="App">
             < Header />
             < InputsForm />
+            < cartContents/>
         </div>
     );
     // on load, get groceries
@@ -36,12 +40,14 @@ function App() {
 
 
 const addGrocery = () => {
-    axios.post('/groceries', { item: newItem, quantity: newQuantity, unit: newUnit })
+    axios.post('/groceries', { item: newItem, quantity: newQuantity, unit: newUnit, purchase: newPurchase})
       .then(response => {
         // clear inputs
         setnewItem('');
         setnewQuantitiy(0);
         setnewUnit('');
+        setNewPurchase(false);
+        
         
           //call getGroceries
         getGroceries();
@@ -56,24 +62,10 @@ const addGrocery = () => {
         <div className="App">
             < Header />
             < InputsForm />
-            <main>
-                <p>Under Construction...</p>
-            </main>
+            < cartContents/>
         </div>
     );
 
-
-
-
-
-
-
-
-
-
-
-
-    
 }
 
 export default App;
