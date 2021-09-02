@@ -14,9 +14,6 @@ function App() {
         <div className="App">
             < Header />
             < InputsForm />
-            <main>
-                <p>Under Construction...</p>
-            </main>
         </div>
     );
 
