@@ -4,6 +4,10 @@ import Header from '../Header/Header.jsx'
 import InputsForm from '../Inputs/inputs.jsx';  
 
 
+
+
+
+
 function App() {
     return (
         <div className="App">

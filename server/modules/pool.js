@@ -5,7 +5,7 @@ const pg = require('pg');
 const Pool = pg.Pool;
 
 const pool = new Pool({
-    database: 'fs-react-shopping', // database name (this will change)
+    database: 'groceries', // database name (this will change)
     host: 'localhost', // where to find the database
     port: 5432,        // port for finding the database
     max: 10,           // max number of connections for the pool
