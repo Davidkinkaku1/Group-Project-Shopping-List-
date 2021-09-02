@@ -40,6 +40,19 @@ router.post('/', (req, res) => {
 
 
 
+router.delete('/:id', (req, res) => {
+    const foodies = req.params.id;
+    console.log(`Deleting groceries with id ${foodies}`)
+    const sqlText = `DELETE FROM "groceries" WHERE id=$1;`;
+    pool.query(sqlText, [foodies]).then(() => {
+        res.sendStatus(204); //successful Delete
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    })
+
+});
+
 
 
 
