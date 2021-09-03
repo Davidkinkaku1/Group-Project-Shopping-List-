@@ -8,9 +8,9 @@ import GroceryList from "../GroceryList/GroceryList";
 
 function App() {
   let [grocieriesList, setGrocieriesList] = useState([]);
-  let [newItem, setnewItem] = useState([""]);
-  let [newQuantity, setnewQuantitiy] = useState([0]);
-  let [newUnit, setnewUnit] = useState([""]);
+  let [newItem, setNewItem] = useState([""]);
+  let [newQuantity, setNewQuanity] = useState([0]);
+  let [newUnit, setNewUnit] = useState([""]);
   let [newPurchase, setNewPurchase] = useState([false]);
 
   // on load, get groceries
@@ -40,9 +40,9 @@ function App() {
       })
       .then((response) => {
         // clear inputs
-        setnewItem("");
-        setnewQuantitiy(0);
-        setnewUnit("");
+        setNewItem("");
+        setNewQuanity(0);
+        setNewUnit("");
         setNewPurchase(false);
 
         //call getGroceries
@@ -59,7 +59,7 @@ function App() {
       <Header />
       <InputsForm addGrocery={addGrocery} />
       <CartContents />
-      <GroceryList
+      <GroceryList grocieriesList={grocieriesList} />
     </div>
   );
 }
