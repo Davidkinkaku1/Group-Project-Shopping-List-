@@ -9,21 +9,22 @@ const deleteGrocery = (id) => {
     props.getGroceries();
   });
 }
-
-
   return (
     <>
       <h2>Grocery List</h2>
-      <table>
+      <table className="table table-hover">
         <thead>
           <tr>
-            <th>item</th>
-            <th>quantity</th>
-            <th>unit</th>
-            <th>purchased</th>
+            <th scope="col">Item</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Purchased</th>
+            <th scope="col">Buy</th>
+            <th scope="col">Remove</th>
           </tr>
         </thead>
         <tbody>
+
             {props.grocieriesList.map((grocery) => (
               <tr key={grocery.id}>
                 <td>{grocery.item}</td>
@@ -31,17 +32,16 @@ const deleteGrocery = (id) => {
                 <td>{grocery.unit}</td>
                 <td>{grocery.purchased ? "purchased" : "not purchased"}</td>
                 <td>
-                  {!grocery.purchased && <button onClick={()=> {props.updateOne(grocery.id)}}>Buy</button>}
+                  {!grocery.purchased && <button className="btn btn-primary" onClick={()=> {props.updateOne(grocery.id)}}>Buy</button>}
                 </td>
                 <td>
-                  <button onClick={() => deleteGrocery(grocery.id)} type="submit">Remove</button>
+                  <button className="btn btn-primary" onClick={() => deleteGrocery(grocery.id)} type="submit">Remove</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </>
-   
   );
 };
 

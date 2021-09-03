@@ -5,7 +5,8 @@ import Header from "../Header/Header.jsx";
 import InputsForm from "../Inputs/inputs.jsx";
 import CartContents from "../Cart/Cart.jsx";
 import GroceryList from "../GroceryList/GroceryList";
-// import { response } from "express";
+import "bootstrap/dist/css/bootstrap.css";
+
 
 function App() {
   let [grocieriesList, setGrocieriesList] = useState([]);
