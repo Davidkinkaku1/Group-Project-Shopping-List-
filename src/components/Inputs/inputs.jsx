@@ -1,8 +1,8 @@
 function InputsForm(props) {
-  //   const handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     addGrocery(grocery);
-  //   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addGrocery(grocery);
+  };
 
   return (
     <>
@@ -16,12 +16,12 @@ function InputsForm(props) {
           value={props.newItem}
           onChange={(evt) => props.setNewItem(evt.target.value)}
         />
-        <label>Quantity</label>
+        <label>Quanity</label>
         <input
           type="number"
-          placeholder="Quantity"
-          value={props.newQuantity}
-          onChange={(evt) => props.setNewQuantitiy(evt.target.value)}
+          placeholder="Quanity"
+          value={props.newQuanity}
+          onChange={(evt) => props.setNewQuanity(evt.target.value)}
         />
         <label>Unit</label>
         <input

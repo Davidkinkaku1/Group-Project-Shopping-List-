@@ -9,7 +9,7 @@ import GroceryList from "../GroceryList/GroceryList";
 function App() {
   let [grocieriesList, setGrocieriesList] = useState([]);
   let [newItem, setNewItem] = useState([""]);
-  let [newQuantity, setNewQuanity] = useState([0]);
+  let [newQuanity, setNewQuanity] = useState([0]);
   let [newUnit, setNewUnit] = useState([""]);
   let [newPurchase, setNewPurchase] = useState([false]);
 
@@ -20,9 +20,9 @@ function App() {
 
   const getGroceries = () => {
     axios
-      .get("/groceries")
+      .get("/list")
       .then((response) => {
-        setGuestList(response.data);
+        setGrocieriesList(response.data);
       })
       .catch((err) => {
         alert("error getting groceries");
@@ -32,9 +32,9 @@ function App() {
 
   const addGrocery = () => {
     axios
-      .post("/groceries", {
+      .post("/list", {
         item: newItem,
-        quantity: newQuantity,
+        quanity: newQuanity,
         unit: newUnit,
         purchase: newPurchase,
       })
@@ -54,10 +54,27 @@ function App() {
       });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (newItem) {
+      addGrocery();
+    } else {
+      alert("The new item needs more data!");
+    }
+  };
+
   return (
     <div className="App">
       <Header />
-      <InputsForm addGrocery={addGrocery} />
+      <InputsForm
+        newItem={newItem}
+        setNewItem={setNewItem}
+        newQuanity={newQuanity}
+        setNewQuanity={setNewQuanity}
+        newUnit={newUnit}
+        setNewUnit={setNewUnit}
+        handleSubmit={handleSubmit}
+      />
       <CartContents />
       <GroceryList grocieriesList={grocieriesList} />
     </div>
