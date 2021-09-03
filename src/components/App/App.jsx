@@ -76,8 +76,8 @@ function App() {
         setNewUnit={setNewUnit}
         handleSubmit={handleSubmit}
       />
-      <CartContents />
-      <GroceryList grocieriesList={grocieriesList} />
+      <CartContents getGroceries={getGroceries}/>
+      <GroceryList grocieriesList={grocieriesList} getGroceries={getGroceries}/>
     </div>
   );
 }
