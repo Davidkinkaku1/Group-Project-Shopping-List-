@@ -1,4 +1,16 @@
+import axios from "axios";
+
+
 const GroceryList = (props) => {
+// Delete button for indivudual items 
+
+const deleteGrocery = (id) => {
+  axios.delete(`/list/${id}`).then((response) => {
+    props.getGroceries();
+  });
+}
+
+
   return (
     <>
       <>
@@ -23,7 +35,7 @@ const GroceryList = (props) => {
                   <button type="submit">Buy</button>
                 </td>
                 <td>
-                  <button type="submit">Remove</button>
+                  <button onClick={() => deleteGrocery(grocery.id)} type="submit">Remove</button>
                 </td>
               </tr>
             ))}
