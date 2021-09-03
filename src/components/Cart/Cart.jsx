@@ -3,7 +3,7 @@ const CartContents = (props) => {
     <>
       <h2>Cart Contents</h2>
       <button onClick={props.updateAll} type="submit">Reset</button>
-      <button type="submit">clear</button>
+      <button type="submit">Clear</button>
     </>
   );
 }
