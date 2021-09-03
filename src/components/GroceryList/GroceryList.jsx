@@ -19,6 +19,12 @@ const GroceryList = (props) => {
                 <td>{grocery.quantity}</td>
                 <td>{grocery.unit}</td>
                 <td>{grocery.purchased ? "purchased" : "not purchased"}</td>
+                <td>
+                  <button type="submit">Buy</button>
+                </td>
+                <td>
+                  <button type="submit">Remove</button>
+                </td>
               </tr>
             ))}
           </tbody>
