@@ -20,7 +20,7 @@ const GroceryList = (props) => {
                 <td>{grocery.unit}</td>
                 <td>{grocery.purchased ? "purchased" : "not purchased"}</td>
                 <td>
-                  <button type="submit">Buy</button>
+                  {!grocery.purchased && <button onClick={()=> {props.updateOne(grocery.id)}}>Buy</button>}
                 </td>
                 <td>
                   <button type="submit">Remove</button>
