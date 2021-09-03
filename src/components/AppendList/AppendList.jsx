@@ -1,3 +1,0 @@
-const appendList = (props) => {
-  return <></>;
-};

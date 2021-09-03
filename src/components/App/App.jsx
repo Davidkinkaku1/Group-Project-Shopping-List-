@@ -1,18 +1,16 @@
-
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import Header from "../Header/Header.jsx";
 import InputsForm from "../Inputs/inputs.jsx";
 import CartContents from "../Cart/Cart.jsx";
-
+import GroceryList from "../GroceryList/GroceryList";
 
 function App() {
-  let [grocieriesList, setgrocieriesList] = useState([]);
-  let [newItem, setnewItem] = useState([""]);
-  let [newQuantity, setnewQuantitiy] = useState([0]);
-  let [newUnit, setnewUnit] = useState([""]);
+  let [grocieriesList, setGrocieriesList] = useState([]);
+  let [newItem, setNewItem] = useState([""]);
+  let [newQuantity, setNewQuanity] = useState([0]);
+  let [newUnit, setNewUnit] = useState([""]);
   let [newPurchase, setNewPurchase] = useState([false]);
 
   // on load, get groceries
@@ -42,9 +40,9 @@ function App() {
       })
       .then((response) => {
         // clear inputs
-        setnewItem("");
-        setnewQuantitiy(0);
-        setnewUnit("");
+        setNewItem("");
+        setNewQuanity(0);
+        setNewUnit("");
         setNewPurchase(false);
 
         //call getGroceries
@@ -59,8 +57,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <InputsForm />
+      <InputsForm addGrocery={addGrocery} />
       <CartContents />
+      <GroceryList grocieriesList={grocieriesList} />
     </div>
   );
 }
