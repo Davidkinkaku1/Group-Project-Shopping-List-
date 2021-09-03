@@ -4,9 +4,10 @@ import axios from "axios";
 import Header from "../Header/Header.jsx";
 import InputsForm from "../Inputs/inputs.jsx";
 import CartContents from "../Cart/Cart.jsx";
+import GroceryList from "../GroceryList/GroceryList";
 
 function App() {
-  let [grocieriesList, setgrocieriesList] = useState([]);
+  let [grocieriesList, setGrocieriesList] = useState([]);
   let [newItem, setnewItem] = useState([""]);
   let [newQuantity, setnewQuantitiy] = useState([0]);
   let [newUnit, setnewUnit] = useState([""]);
@@ -56,8 +57,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <InputsForm />
+      <InputsForm addGrocery={addGrocery} />
       <CartContents />
+      <GroceryList
     </div>
   );
 }
