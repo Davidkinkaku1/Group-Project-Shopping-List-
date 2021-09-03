@@ -24,21 +24,6 @@ const deleteGrocery = (id) => {
           </tr>
         </thead>
         <tbody>
-          {props.grocieriesList.map((customer) => (
-            <tr key={customer.id}>
-              <td>{customer.item}</td>
-              <td>{customer.quantity}</td>
-              <td>{customer.unit}</td>
-              <td>{customer.purchased ? "purchased" : "not purchased"}</td>
-              <td>
-                <button type="submit">Buy</button>
-              </td>
-              <td>
-                <button type="submit">Remove</button>
-              </td>
-            </tr>
-          </thead>
-          <tbody>
             {props.grocieriesList.map((grocery) => (
               <tr key={grocery.id}>
                 <td>{grocery.item}</td>
@@ -56,7 +41,7 @@ const deleteGrocery = (id) => {
           </tbody>
         </table>
       </>
-    </>
+   
   );
 };
 
