@@ -5,7 +5,7 @@ function InputsForm(props) {
   };
 
   return (
-    <>
+    <div className="form-group">
       <h2>Add an Item:</h2>
 
       <form onSubmit={props.handleSubmit}>
@@ -30,9 +30,11 @@ function InputsForm(props) {
           value={props.newUnit}
           onChange={(evt) => props.setNewUnit(evt.target.value)}
         />
-        <button type="submit">Save</button>
+        <button className="btn btn-primary" type="submit">
+          Save
+        </button>
       </form>
-    </>
+    </div>
   );
 }
 
