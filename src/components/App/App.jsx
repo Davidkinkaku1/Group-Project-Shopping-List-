@@ -6,6 +6,7 @@ import axios from "axios";
 import Header from "../Header/Header.jsx";
 import InputsForm from "../Inputs/inputs.jsx";
 import CartContents from "../Cart/Cart.jsx";
+import { response } from "express";
 
 
 function App() {
@@ -21,8 +22,7 @@ function App() {
   }, []);
 
   const getGroceries = () => {
-    axios
-      .get("/groceries")
+    axios.get("/groceries")
       .then((response) => {
         setGuestList(response.data);
       })
@@ -33,8 +33,7 @@ function App() {
   };
 
   const addGrocery = () => {
-    axios
-      .post("/groceries", {
+    axios.post("/groceries", {
         item: newItem,
         quantity: newQuantity,
         unit: newUnit,
@@ -55,6 +54,16 @@ function App() {
         console.log(err);
       });
   };
+
+  const updateAll = () => {
+    
+    axios.put("/groceries")
+      .then((response) =>{
+        getGroceries();
+      })
+
+  }
+
 
   return (
     <div className="App">
