@@ -9,7 +9,7 @@ import GroceryList from "../GroceryList/GroceryList";
 function App() {
   let [grocieriesList, setGrocieriesList] = useState([]);
   let [newItem, setNewItem] = useState([""]);
-  let [newQuanity, setNewQuanity] = useState([0]);
+  let [newQuantity, setNewQuantity] = useState([0]);
   let [newUnit, setNewUnit] = useState([""]);
   let [newPurchase, setNewPurchase] = useState([false]);
 
@@ -35,14 +35,14 @@ function App() {
     axios
       .post("/list", {
         item: newItem,
-        quanity: newQuanity,
+        quantity: newQuantity,
         unit: newUnit,
         purchase: newPurchase,
       })
       .then((response) => {
         // clear inputs
         setNewItem("");
-        setNewQuanity(0);
+        setNewQuantity(0);
         setNewUnit("");
         setNewPurchase(false);
 
@@ -70,8 +70,8 @@ function App() {
       <InputsForm
         newItem={newItem}
         setNewItem={setNewItem}
-        newQuanity={newQuanity}
-        setNewQuanity={setNewQuanity}
+        newQuantity={newQuantity}
+        setNewQuanity={setNewQuantity}
         newUnit={newUnit}
         setNewUnit={setNewUnit}
         handleSubmit={handleSubmit}
