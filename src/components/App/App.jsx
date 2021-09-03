@@ -7,6 +7,7 @@ import CartContents from "../Cart/Cart.jsx";
 import GroceryList from "../GroceryList/GroceryList";
 import "bootstrap/dist/css/bootstrap.css";
 
+
 function App() {
   let [grocieriesList, setGrocieriesList] = useState([]);
   let [newItem, setNewItem] = useState([""]);
@@ -54,7 +55,31 @@ function App() {
         alert("Error Adding Grocery");
         console.log(err);
       });
+      
   };
+
+  const updateAll = () => {
+    axios.put("/list/resetAll")
+    .then((response) => {
+      getGroceries();
+    })
+    .catch((err) => {
+      alert("error reseting purchased state");
+      console.log(err);
+    });
+  }
+
+  const updateOne = (groceriesid) => {
+    console.log("id for purchase", groceriesid)
+    axios.put(`/list/purchase/${groceriesid}`)
+    .then((response) => {
+      getGroceries();
+    })
+    .catch((err) => {
+      alert("error reseting purchased state");
+      console.log(err);
+    });
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -71,14 +96,15 @@ function App() {
       <InputsForm
         newItem={newItem}
         setNewItem={setNewItem}
-        newQuantity={newQuantity}
+        newQuanity={newQuantity}
         setNewQuanity={setNewQuantity}
         newUnit={newUnit}
         setNewUnit={setNewUnit}
         handleSubmit={handleSubmit}
       />
-      <CartContents />
-      <GroceryList grocieriesList={grocieriesList} />
+      <CartContents getGroceries={getGroceries} updateAll={updateAll}/>
+      <GroceryList grocieriesList={grocieriesList} getGroceries={getGroceries} updateOne={updateOne}/>
+
     </div>
   );
 }
