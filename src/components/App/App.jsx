@@ -95,7 +95,7 @@ function App() {
       <InputsForm
         newItem={newItem}
         setNewItem={setNewItem}
-        newQuantity={newQuantity}
+        newQuanity={newQuantity}
         setNewQuanity={setNewQuantity}
         newUnit={newUnit}
         setNewUnit={setNewUnit}
