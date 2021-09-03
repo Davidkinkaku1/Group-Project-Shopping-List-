@@ -31,6 +31,7 @@ function App() {
   };
 
   const addGrocery = () => {
+    console.log("this is the post log!");
     axios
       .post("/list", {
         item: newItem,
