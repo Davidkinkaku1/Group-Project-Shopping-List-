@@ -2,13 +2,15 @@ const GroceryList = (props) => {
   return (
     <>
       <h2>Grocery List</h2>
-      <table>
+      <table className="table table-hover">
         <thead>
           <tr>
-            <th>item</th>
-            <th>quantity</th>
-            <th>unit</th>
-            <th>purchased</th>
+            <th scope="col">Item</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Purchased</th>
+            <th scope="col">Buy</th>
+            <th scope="col">Remove</th>
           </tr>
         </thead>
         <tbody>

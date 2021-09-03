@@ -11,6 +11,7 @@ function InputsForm(props) {
       <form onSubmit={props.handleSubmit}>
         <label>Item</label>
         <input
+          className="form-control"
           type="text"
           placeholder="Item"
           value={props.newItem}
@@ -18,6 +19,7 @@ function InputsForm(props) {
         />
         <label>Quanity</label>
         <input
+          className="form-control"
           type="number"
           placeholder="Quanity"
           value={props.newQuanity}
@@ -25,11 +27,13 @@ function InputsForm(props) {
         />
         <label>Unit</label>
         <input
+          className="form-control"
           type="text"
           placeholder="Unit"
           value={props.newUnit}
           onChange={(evt) => props.setNewUnit(evt.target.value)}
         />
+        <br />
         <button className="btn btn-primary" type="submit">
           Save
         </button>

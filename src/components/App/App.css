@@ -1,4 +1,42 @@
-main {
-  width: 90%;
-  margin: auto;
+#body {
+  margin: 100px;
+  padding: 200px;
+  padding-top: 5px;
+  margin: 20px;
+  background-color: rgb(210, 201, 224);
+  font-family: 'Kaisei HarunoUmi',
+    serif;
+}
+
+.form-control {
+  background-color: rgb(210, 201, 224);
+}
+
+.App {
+  background-color: rgb(210, 201, 224);
+}
+
+.btn.btn-primary {
+  background-color: rgb(211, 172, 172);
+  border: rosybrown;
+  font-family: 'Kaisei HarunoUmi',
+    serif;
+}
+
+.btn.btn-primary:active {
+  background-color: #99b69b !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn.btn-primary:hover {
+  color: rgb(0, 0, 0);
+  background-color: #99b69b;
+  border-color: white;
+}
+
+#root {
+  font-family: 'Kaisei HarunoUmi',
+    serif;
+
 }
