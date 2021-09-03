@@ -1,19 +1,16 @@
-
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import Header from "../Header/Header.jsx";
 import InputsForm from "../Inputs/inputs.jsx";
 import CartContents from "../Cart/Cart.jsx";
-import { response } from "express";
-
+import GroceryList from "../GroceryList/GroceryList";
 
 function App() {
-  let [grocieriesList, setgrocieriesList] = useState([]);
-  let [newItem, setnewItem] = useState([""]);
-  let [newQuantity, setnewQuantitiy] = useState([0]);
-  let [newUnit, setnewUnit] = useState([""]);
+  let [grocieriesList, setGrocieriesList] = useState([]);
+  let [newItem, setNewItem] = useState([""]);
+  let [newQuantity, setNewQuanity] = useState([0]);
+  let [newUnit, setNewUnit] = useState([""]);
   let [newPurchase, setNewPurchase] = useState([false]);
 
   // on load, get groceries
@@ -22,7 +19,7 @@ function App() {
   }, []);
 
   const getGroceries = () => {
-    axios.get("/groceries")
+    axios.get("/list")
       .then((response) => {
         setGuestList(response.data);
       })
@@ -33,7 +30,7 @@ function App() {
   };
 
   const addGrocery = () => {
-    axios.post("/groceries", {
+    axios.post("/list", {
         item: newItem,
         quantity: newQuantity,
         unit: newUnit,
@@ -41,9 +38,9 @@ function App() {
       })
       .then((response) => {
         // clear inputs
-        setnewItem("");
-        setnewQuantitiy(0);
-        setnewUnit("");
+        setNewItem("");
+        setNewQuanity(0);
+        setNewUnit("");
         setNewPurchase(false);
 
         //call getGroceries
@@ -55,12 +52,17 @@ function App() {
       });
   };
 
+  //Resting all Purchases to default state
   const updateAll = () => {
     
-    axios.put("/groceries")
+    axios.put("/list/resetAll")
       .then((response) =>{
         getGroceries();
       })
+      .catch((err) => {
+        alert("Error reseting all Purchases");
+        console.log(err);
+      });  
 
   }
 
@@ -68,8 +70,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <InputsForm />
-      <CartContents />
+      <InputsForm addGrocery={addGrocery} />
+      <CartContents updateAll={updateAll}/>
+      <GroceryList grocieriesList={grocieriesList} />
     </div>
   );
 }
