@@ -1,9 +1,23 @@
-const CartContents = (props) => {
+import axios from "axios";
+
+function CartContents(props) {
+// Delete button for indivudual items 
+
+// Delete button for indivudual items 
+
+const deleteAllGrocery = () => {
+  axios.delete("/list/deleteAll").then((response) => {
+    props.getGroceries();
+  });
+}
+
+
   return (
     <>
       <h2>Cart Contents</h2>
       <button onClick={props.updateAll} type="submit">Reset</button>
-      <button type="submit">Clear</button>
+      <button onClick={() =>deleteAllGrocery()} type="submit">clear</button>
+
     </>
   );
 }

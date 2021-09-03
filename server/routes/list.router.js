@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
-router.use(express.urlencoded({ extended: true }));
 // TODO - Add routes here...
 
 
@@ -23,9 +22,10 @@ router.get('/', (req, res) => {
 // POST: posting for adding a new item to the database
 router.post('/', (req, res) => {
     const grocery = req.body;
-    const sqlText = `INSERT INTO groceries ("item", "quantity", "unit", "purchased")
-                     VALUES ($1, $2, $3, $4)`;
-    pool.query(sqlText, [grocery.item, grocery.quantity, grocery.unit, grocery.purchased])
+    console.log('new grocery item!', grocery)
+    const sqlText = `INSERT INTO groceries ("item", "quantity", "unit")
+                     VALUES ($1, $2, $3)`;
+    pool.query(sqlText, [grocery.item, grocery.quantity, grocery.unit])
 
         .then((result) => {
             console.log(`Added some grocery data to the database`, grocery);

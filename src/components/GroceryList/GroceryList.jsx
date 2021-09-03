@@ -1,18 +1,29 @@
+import axios from "axios";
+
+
 const GroceryList = (props) => {
+// Delete button for indivudual items 
+
+const deleteGrocery = (id) => {
+  axios.delete(`/list/${id}`).then((response) => {
+    props.getGroceries();
+  });
+}
+
+
   return (
     <>
-      <>
-        <h2>Grocery List</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>item</th>
-              <th>quantity</th>
-              <th>unit</th>
-              <th>purchased</th>
-            </tr>
-          </thead>
-          <tbody>
+      <h2>Grocery List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>item</th>
+            <th>quantity</th>
+            <th>unit</th>
+            <th>purchased</th>
+          </tr>
+        </thead>
+        <tbody>
             {props.grocieriesList.map((grocery) => (
               <tr key={grocery.id}>
                 <td>{grocery.item}</td>
@@ -23,14 +34,14 @@ const GroceryList = (props) => {
                   {!grocery.purchased && <button onClick={()=> {props.updateOne(grocery.id)}}>Buy</button>}
                 </td>
                 <td>
-                  <button type="submit">Remove</button>
+                  <button onClick={() => deleteGrocery(grocery.id)} type="submit">Remove</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </>
-    </>
+   
   );
 };
 
