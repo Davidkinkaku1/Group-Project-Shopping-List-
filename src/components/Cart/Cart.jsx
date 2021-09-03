@@ -15,8 +15,9 @@ const deleteAllGrocery = () => {
   return (
     <>
       <h2>Cart Contents</h2>
-      <button type="submit">Reset</button>
+      <button onClick={props.updateAll} type="submit">Reset</button>
       <button onClick={() =>deleteAllGrocery()} type="submit">clear</button>
+
     </>
   );
 }
