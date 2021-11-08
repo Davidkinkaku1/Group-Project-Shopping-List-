@@ -1,6 +1,5 @@
 # React Shopping List
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
 
 ## Description
 Created a shopping list to help people keep track of the list of what they want to buy and mark them as purchsed or delete them off their list.
